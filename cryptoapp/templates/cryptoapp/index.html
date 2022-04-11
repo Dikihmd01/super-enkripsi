@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kriptografi</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <main>
+        <div class="container py-4">
+          <header class="pb-3 mb-2 border-bottom">
+            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+              <span class="fs-4">Diki Hamdani | Kriptografi</span>
+            </a>
+          </header>
+      
+          <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-2">
+              <h1 class="display-5 fw-bold">Implementasi Super Enkripsi</h1>
+              <p class="col-md-8 text-small">
+                Ini merupakan tugas untuk matakuliah Kriptografi dengan mengimplementasikan super enkripsi. Pada program ini dibuat dengan menggunakan algoritma Vigenere Cipher dan Caesar Cipher.
+              </p>
+              <form action="" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                  <div class="mb-2">
+                    {{ field.label_tag }}
+                    {{ field }}
+                  </div>
+                {% endfor %}
+                <input type="submit" class="btn btn-primary" value="Enkripsi">
+            </form>
+
+            
+            {% if message != None and key != None %}
+            <h3 class="mt-3">Enkripsi 1: Algoritma Vigenere Cipher</h3>
+            <table class="table table-bordered table-hover mt-3">
+              <tr>
+                <th>Pesan yang akan dienkripsi</th>
+                <td>{{ message }}</td>
+              </tr>
+
+              <tr>
+                <th>Kunci</th>
+                <td>{{ keyword }}</td>
+              </tr>
+
+              <tr>
+                <th>Hasil enkripsi</th>
+                <td>{{ vigenere_encrypt_text }}</td>
+              </tr>
+
+              <tr>
+                <th>Hasil dekripsi</th>
+                <td>{{ vigenere_decrypt_text }}</td>
+              </tr>
+            </table>
+
+            <h3 class="mt-3">Enkripsi 2: Algoritma Caesar Cipher</h3>
+            <p class="col-md-6 text-small">
+              Untuk enkripsi kedua yaitu melakukan enkripsi dari hasil enkripsi algoritma Vigenere Cipher.
+            </p>
+            <table class="table table-bordered table-hover mt-3">
+              <tr>
+                <th>Pesan yang akan dienkripsi</th>
+                <td>{{ vigenere_encrypt_text }}</td>
+              </tr>
+
+              <tr>
+                <th>Sisipan Caesar</th>
+                <td>{{ 3 }}</td>
+              </tr>
+
+              <tr>
+                <th>Hasil enkripsi</th>
+                <td>{{ final_encrypt_text }}</td>
+              </tr>
+
+              <tr>
+                <th>Hasil dekripsi</th>
+                <td>{{ final_decrypt_text }}</td>
+              </tr>
+            </table>
+            {% endif %}
+              
+            </div>
+          </div>
+      
+          <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+              <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <img src="{% static 'img/2.jpg' %}" alt="diki hamdani" width="100%">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>Profil Mahasiswa</h2>
+                <table class="table">
+                  <tr>
+                    <th>Nama</th>
+                    <td>:</td>
+                    <td>Diki Hamdani</td>
+                  </tr>
+                  <tr>
+                    <th>NPM</th>
+                    <td>:</td>
+                    <td>432007006190079</td>
+                  </tr>
+                  <tr>
+                    <th>Kelas</th>
+                    <td>:</td>
+                    <td>3B</td>
+                  </tr>
+                  <tr>
+                    <th class="bg-dark text-light" colspan="3">Rincian Tugas</th>
+                  </tr>
+                  <tr>
+                    <th>Algoritma</th>
+                    <td>:</td>
+                    <td>
+                      <ol>
+                        <li>Vigenere Cipher</li>
+                        <li>Caesar Cipher</li>
+                      </ol>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Bahasa Pemrograman</th>
+                    <td>:</td>
+                    <td>Python</td>
+                  </tr>
+                  <tr>
+                    <th>Framework</th>
+                    <td>:</td>
+                    <td>
+                      <ol>
+                        <li>Django 4 (Back-end)</li>
+                        <li>Bootstrap 5 (Front-end)</li>
+                      </ol>
+                    </td>
+                  </tr>
+                </table>
+                <a href="https://github.com/Dikihmd01" class="btn btn-outline-secondary" type="button">Github</a>
+                <a href="https://www.linkedin.com/in/dikihamdani/" class="btn btn-outline-secondary" type="button">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+</body>
+</html>

@@ -1,4 +1,5 @@
 from ast import keyword
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .forms import CryptoForm
 
@@ -90,6 +91,7 @@ def index(request):
     if request.method == 'POST':
         form = CryptoForm(request.POST)
         if form.is_valid():
+            
             msg = request.POST['message'].lower()
             message = msg.replace(" ", "")
             key1 = request.POST['key'].lower()
@@ -100,6 +102,7 @@ def index(request):
 
             final_encrypt_text = encrypt_caesar(vigenere_encrypt_text, shift=3)
             final_decrypt_text = decrypt_caesar(final_encrypt_text, shift=3)
+            # form.cleaned_data()
 
             data = {
                 'message': msg,
@@ -110,6 +113,7 @@ def index(request):
                 'final_encrypt_text': final_encrypt_text,
                 'final_decrypt_text': final_decrypt_text
             }
+            form = CryptoForm()
     else:
         form = CryptoForm()
     
